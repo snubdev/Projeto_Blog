@@ -70,6 +70,7 @@ input[type=submit] {
     padding:10px 20px;
     font-size:14px;
     text-transform:uppercase;
+    border-radius: 4px;
 }
 .errorlist {
     color:#cc0033;
@@ -89,3 +90,4 @@ input[type=submit] {
     font-weight:bold;
     font-size:12px;
     color:#666;
+}

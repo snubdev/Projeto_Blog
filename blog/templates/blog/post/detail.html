@@ -8,4 +8,9 @@
         Publicados {{ post.publish }} de {{ post.author }}
     </p>
     {{ post.body|linebreaks }}
+    <p>
+        <a id="button-share" href="{% url 'blog:post_share' post.id %}">
+            <input type="submit" value="Compartilhe esta postagem">
+        </a>
+    </p>
 {% endblock %}

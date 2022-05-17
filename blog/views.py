@@ -40,7 +40,6 @@ def post_share(request, post_id):
     post = get_object_or_404(Post, id=post_id, status='published')
     sent = False
 
-
     if request.method == 'POST':
         # Formulário foi submetido
         form = EmailPostForm(request.POST)
@@ -48,12 +47,11 @@ def post_share(request, post_id):
             # Campos do formulário passaram pela validação
             cd = form.cleaned_data
             # ... envia o email
-            post_url = request.build_absolute_url(post.get_absolute_url())
-            subject = f'{cd["name"]} recommends you read ' \
-                      f'{post.title}'
+            post_url = request.build_absolute_uri(post.get_absolute_url())
+            subject = f'{cd["nome"]} recommends you read {post.title}'
             message = f'Read {post.title} at {post_url}\n\n' \
-                      f'{cd["name"]}' 's comments: {cd["comments"}'
-            send_mail(subject, message, 'admin@meublog', [cd['to']])
+                      f'{cd["nome"]}\' s comments: {cd["comentarios"]}'
+            send_mail(subject, message, 'admin@meublog.com', [cd['para']])
             sent = True
     else:
         form = EmailPostForm()
