@@ -25,6 +25,10 @@ h3 {
     margin:30px 0 0;
 }
 
+h4 {
+    border-bottom:1px solid #bbb;
+}
+
 #content {
     float:left;
     width:60%;

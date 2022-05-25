@@ -1,5 +1,7 @@
 {% extends "blog/base.html" %}
 
+{% load blog_tags %}
+
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block content %}
@@ -7,7 +9,7 @@
     <p class="date">
         Publicados {{ post.publish }} de {{ post.author }}
     </p>
-    {{ post.body|linebreaks }}
+    {{ post.body|markdown }}
     <p>
         <a id="button-share" href="{% url 'blog:post_share' post.id %}">
             <input type="submit" value="Compartilhe esta postagem">
@@ -23,6 +25,10 @@
     {% empty %}
       Ainda não há postagem semelhante
     {% endfor %}
+
+    <h4>
+
+    </h4>
 
     {% with comments.count as total_comments %}
       <h3>
