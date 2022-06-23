@@ -1,0 +1,12 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <h1>Faça o seu Login</h1>
+    <form method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Entrar"></p>
+    </form>
+{% endblock %}
