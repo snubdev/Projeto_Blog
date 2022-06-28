@@ -15,26 +15,36 @@
         {% block content %}
         {% endblock %}
     </div>
-    <div id="sidebar">
-        <h2>
-            <a href="{% url 'blog:post_list' %}">Blog</a>
-        </h2>
-        <p>Seja Bem Vindo ao meu Blog</p>
-        <p>Total de posts {% total_posts %}.</p>
-        <p>
-            <a href="{% url 'blog:post_feed' %}">Assine meu feed RSS</a>
-        </p>
-        <h3>Mais recentes postagens</h3>
-        {% show_latest_posts 3 %}
-        <h3>Postagem mais comentada</h3>
-        {% get_most_commented_posts as most_commented_posts %}
-        <ul>
-            {% for post in most_commented_posts %}
-              <li>
-                  <a href="{{ post.get.absolute_url }}">{{ post.title}}</a>
-              </li>
-            {% endfor %}
-        </ul>
-    </div>
+    {% if request.user.is_authenticated %}
+        <div id="sidebar">
+            <h2>
+                <a href="{% url 'blog:post_list' %}">Blog</a>
+            </h2>
+            <p>Seja Bem Vindo ao meu Blog</p>
+            <p>Total de posts {% total_posts %}.</p>
+            <p>
+                <a href="{% url 'blog:post_feed' %}">Assine meu feed RSS</a>
+            </p>
+            <h3>Mais recentes postagens</h3>
+            {% show_latest_posts 3 %}
+            <h3>Postagem mais comentada</h3>
+            {% get_most_commented_posts as most_commented_posts %}
+            <ul>
+                {% for post in most_commented_posts %}
+                  <li>
+                      <a href="{{ post.get.absolute_url }}">{{ post.title}}</a>
+                  </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    <span>
+        {% if request.user.is_authenticated %}
+            <div class="user-name">Olá, {{ request.user.first_name }}</div>
+            <a class='button-logout' href="{% url 'blog:logout' %}">Logout</a>
+        {% else %}
+            <a class='button-login' href="{% url 'blog:login' %}">Login</a>
+        {% endif %}
+    </span>
 </body>
 </html>

@@ -101,3 +101,36 @@ input[type=submit] {
     color:#666;
 }
 
+a.button-login {
+    background-color: #00abff;
+    position: relative;
+    right: 100px;
+    top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    color: #ffffff;
+}
+
+a.button-logout {
+    background-color: #00abff;
+    position: relative;
+    right: 100px;
+    bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    color: #ffffff;
+}
+
+div.user-name {
+    margin: 0;
+    width: 60px;
+    height: 40px;
+    background-color: none;
+    display: flex;
+    padding: 1px;
+    text-align: center;
+    position: relative;
+    right: 180px;
+    top: 10px;
+}
+

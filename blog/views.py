@@ -9,9 +9,10 @@ from django.db.models import Count
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank, TrigramSimilarity
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 
 
-
+@login_required
 def post_list(request, tag_slug=None):
     object_list = Post.published.all()
     tag = None
@@ -32,7 +33,7 @@ def post_list(request, tag_slug=None):
         # Se a página estiver fora do intervalo
         # exibe a última página de resultados
         posts = paginator.page(paginator.num_pages)
-    return render(request, 'blog/post/list.html', {'page': page, 'posts': posts, 'tag': tag})
+    return render(request, 'blog/post/list.html', {'page': page, 'posts': posts, 'tag': tag, 'section': post_list})
 
 
 def post_detail(request, year, month, day, post):
@@ -131,4 +132,4 @@ def user_login(request):
                 return HttpResponse('Invalid login')
     else:
         form = LoginForm()
-    return render(request, 'blog/acess/login.html', {'form': form})
+    return render(request, 'blog/login.html', {'form': form})
