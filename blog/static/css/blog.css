@@ -11,7 +11,7 @@ a {
 
 h1 {
     font-weight:normal;
-    border-bottom:1px solid #bbb;
+    border-bottom:10px solid #bbb;
     padding:0 0 10px 0;
 }
 
@@ -121,8 +121,8 @@ a.button-logout {
     color: #ffffff;
 }
 
-div.user-name {
-    margin: 0;
+div.user {
+    ul { margin: 0;
     width: 60px;
     height: 40px;
     background-color: none;
@@ -131,6 +131,15 @@ div.user-name {
     text-align: center;
     position: relative;
     right: 180px;
-    top: 10px;
+    top: 10px; }
 }
 
+
+li {
+    margin: 0;
+    position: relative;
+    top: 300px;
+    marker: none;
+    width: 800px;
+    right: 100px;
+}
