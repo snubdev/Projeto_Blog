@@ -10,7 +10,8 @@
             Por favor, tente novamente
         </p>
     {% else %}
-        <p>Por favor, use o seguinte para fazer login:</p>
+        <p>Por favor, use o seguinte para fazer login</p>
+        <p>Se você não tem uma conta <a href="{% url 'blog:register' %}">Cadastre-se </a></p>
     {% endif %}
     <div class="login-form">
         <form action="{% url 'blog:login' %}" method="post">
@@ -19,5 +20,6 @@
             <input type="hidden" name="next" value="{{ next }}" />
             <p><input type="submit" value="Fazer login"></p>
         </form>
+        <p class="password_text"><a class="password_reset" href="{% url 'blog:password_reset' %}"> Esqueci a senha</a></p>
     </div>
 {% endblock %}

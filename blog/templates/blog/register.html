@@ -1,0 +1,13 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Inscreva-se{% endblock %}
+
+{% block content %}
+    <h1>Crie a sua conta aqui</h1>
+    <p>Por favor, inscreva-se usando o seguinte formulário:</p>
+    <form method="post">
+        {{ user_form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Criar minha conta"></p>
+    </form>
+{% endblock %}

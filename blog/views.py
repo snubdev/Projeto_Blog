@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Post, Comment
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import ListView
-from .forms import EmailPostForm, CommentForm, SearchForm, LoginForm
+from .forms import EmailPostForm, CommentForm, SearchForm, LoginForm, UserRegistrationForm
 from django.core.mail import send_mail
 from taggit.models import Tag
 from django.db.models import Count
@@ -133,3 +133,19 @@ def user_login(request):
     else:
         form = LoginForm()
     return render(request, 'blog/login.html', {'form': form})
+
+
+def register(request):
+    if request.method == 'POST':
+        user_form = UserRegistrationForm(request.POST)
+        if user_form.is_valid():
+            # Cria um objeto para o novo usuário, mas não o salva ainda
+            new_user = user_form.save(commit=False)
+            # Define a senha escolhida
+            new_user.set_password(user_form.cleaned_data['password'])
+            # Salva o objeto User
+            new_user.save()
+            return render(request, 'blog/register_done.html', {'new_user': new_user})
+    else:
+        user_form = UserRegistrationForm()
+    return render(request, 'blog/register.html', {'user_form': user_form})
