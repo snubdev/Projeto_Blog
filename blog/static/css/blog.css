@@ -143,3 +143,7 @@ p.password_text {
     top: 160;
     right: 55px;
 }
+
+.helptext {
+    color: transparent;
+}
