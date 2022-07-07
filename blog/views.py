@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Post, Comment, Profile
+from .models import Post, Comment
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import ListView
-from .forms import EmailPostForm, CommentForm, SearchForm, LoginForm, UserRegistrationForm, UserEditForm, ProfileEditForm
+from .forms import EmailPostForm, CommentForm, SearchForm, LoginForm, UserRegistrationForm
 from django.core.mail import send_mail
 from taggit.models import Tag
 from django.db.models import Count
@@ -146,23 +146,7 @@ def register(request):
             new_user.set_password(user_form.cleaned_data['password'])
             # Salva o objeto User
             new_user.save()
-            Profile.objects.create(user=new_user)
             return render(request, 'blog/register_done.html', {'new_user': new_user})
     else:
         user_form = UserRegistrationForm()
     return render(request, 'blog/register.html', {'user_form': user_form})
-
-
-@login_required
-def edit(request):
-    if request.method == 'POST':
-        user_form = UserEditForm(instance=request.user, data=request.POST)
-        profile_form = ProfileEditForm(instance=request.user.profile, data=request.POST, files=request.Files)
-        if user_form.is_valid() and profile_form.is_valid():
-            user_form.save()
-            profile_form.save()
-    else:
-        user_form = UserEditForm(instance=request.user)
-        profile_form = ProfileEditForm(instance=request.user.profile)
-
-    return render(request, 'blog/edit.html', {'user_form': user_form, 'profile_form': profile_form})
