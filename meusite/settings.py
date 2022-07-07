@@ -142,3 +142,6 @@ EMAIL_USE_TLS = True
 LOGIN_REDIRECT_URL = 'blog:post_list'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
