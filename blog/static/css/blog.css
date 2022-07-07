@@ -80,6 +80,8 @@ input[type=submit] {
     font-size:14px;
     text-transform:uppercase;
     border-radius: 4px;
+    position: relative;
+    top: 10px;
 }
 .errorlist {
     color:#cc0033;
@@ -111,14 +113,9 @@ a.button-login {
     color: #ffffff;
 }
 
-a.button-logout {
-    background-color: #00abff;
-    position: relative;
-    right: 100px;
-    bottom: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    color: #ffffff;
+.btn-group {
+    bottom: 30px;
+    right: 82px;
 }
 
 div.user-name {
@@ -130,12 +127,15 @@ div.user-name {
     padding: 1px;
     text-align: center;
     position: relative;
-    right: 180px;
-    top: 10px;
+    right: 200px;
+    top: 15px;
+    bottom: 30px;
+    white-space: nowrap;
 }
 
 a.password_reset {
     position: relative;
+    top: 30px;
 }
 
 p.password_text {
