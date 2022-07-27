@@ -5,6 +5,7 @@ from django.urls import reverse
 from taggit.managers import TaggableManager
 from django.conf import settings
 
+
 class PublishedManager(models.Manager):
     def get_queryset(self):
         return super(PublishedManager, self).get_queryset().filter(status='published')
@@ -66,3 +67,13 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'Perfil para usuário {self.user.username}'
+
+
+class Suport(models.Model):
+    name = models.CharField(max_length=80)
+    email = models.EmailField()
+    phone = models.IntegerField()
+    body = models.TextField()
+
+    def __str__(self):
+        return f'Sua mensagem foi enviada com sucesso. Obrigado!'

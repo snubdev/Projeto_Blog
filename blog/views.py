@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Post, Comment, Profile
+from .models import Post, Comment, Profile, Suport
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import ListView
-from .forms import EmailPostForm, CommentForm, SearchForm, LoginForm, UserRegistrationForm, UserEditForm, ProfileEditForm
+from .forms import EmailPostForm, CommentForm, SearchForm, LoginForm, UserRegistrationForm, UserEditForm, ProfileEditForm, SuportForm
 from django.core.mail import send_mail
 from taggit.models import Tag
 from django.db.models import Count
@@ -167,3 +167,16 @@ def edit(request):
         profile_form = ProfileEditForm(instance=request.user.profile)
 
     return render(request, 'blog/edit.html', {'user_form': user_form, 'profile_form': profile_form})
+
+
+def suport(request):
+    sent_suport = False
+    if request.method == 'POST':
+        suport_form = SuportForm(request.POST)
+        if suport_form.is_valid():
+            suport_form.save()
+            sent_suport = True
+    else:
+        suport_form = SuportForm()
+
+    return render(request, 'blog/post/suport.html', {'suport_form': suport_form, 'sent_suport': sent_suport})

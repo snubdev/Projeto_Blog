@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Comment, Profile
+from .models import Post, Comment, Profile, Suport
 
 
 @admin.register(Post)
@@ -23,3 +23,9 @@ class CommentAdmin(admin.ModelAdmin):
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ['user', 'date_of_birth', 'photo']
+
+
+@admin.register(Suport)
+class SuportAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'phone', 'body')
+    search_fields = ('name', 'email', 'phone')
