@@ -5,13 +5,13 @@ body {
 }
 
 a {
-    color:#00abff;
+    color:#007BFF;
     text-decoration:none;
 }
 
 h1 {
     font-weight:normal;
-    border-bottom:3px solid #00abff;
+    border-bottom:3px solid #007BFF;
     padding:0 0 10px 0;
 }
 
@@ -74,7 +74,7 @@ input, textarea {
 }
 input[type=submit] {
     font-weight:bold;
-    background:#00abff;
+    background: #007BFF;
     color:#fff;
     padding:10px 20px;
     font-size:14px;
@@ -104,7 +104,7 @@ input[type=submit] {
 }
 
 a.button-login {
-    background-color: #00abff;
+    background-color: #007BFF;
     position: relative;
     right: 100px;
     top: 20px;
