@@ -72,7 +72,7 @@ class Profile(models.Model):
 class Suport(models.Model):
     name = models.CharField(max_length=80)
     email = models.EmailField()
-    phone = models.IntegerField()
+    phone = models.IntegerField(max_length=11)
     body = models.TextField()
 
     def __str__(self):
